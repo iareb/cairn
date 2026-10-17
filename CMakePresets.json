@@ -1,0 +1,50 @@
+{
+    "version": 6,
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "binaryDir": "${sourceDir}/build/${presetName}"
+        },
+        {
+            "name": "debug",
+            "displayName": "Debug",
+            "inherits": "base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "release",
+            "displayName": "Release",
+            "inherits": "base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "asan",
+            "displayName": "AddressSanitizer",
+            "inherits": "base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+                "CAIRN_ASAN": "ON"
+            }
+        }
+    ],
+    "buildPresets": [
+        { "name": "debug",   "configurePreset": "debug",   "configuration": "Debug" },
+        { "name": "release", "configurePreset": "release", "configuration": "Release" },
+        { "name": "asan",    "configurePreset": "asan",    "configuration": "RelWithDebInfo" }
+    ],
+    "testPresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "output": { "outputOnFailure": true }
+        },
+        { "name": "debug",   "inherits": "base", "configurePreset": "debug",   "configuration": "Debug" },
+        { "name": "release", "inherits": "base", "configurePreset": "release", "configuration": "Release" },
+        { "name": "asan",    "inherits": "base", "configurePreset": "asan",    "configuration": "RelWithDebInfo" }
+    ]
+}

@@ -53,3 +53,19 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# build folder
+build/
+
+.vs/
+
+# VS Code: si condividono solo impostazioni del progetto ed estensioni consigliate
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# cairn repository
+.cairn/
+
+CMakeUserPresets.json
+vcpkg_installed/
